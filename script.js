@@ -7,7 +7,43 @@ let homeHeroMessage = document.getElementById('home-hero-message');
 
 let isHoveringHero;
 let isHoveringWork;
-let isMoving = false;
+
+const galleryHoverLeft = document.querySelector('.left');
+const galleryHoverRight = document.querySelector('.right');
+const scrollerWrapper = document.querySelector('.scroller-wrapper');
+
+let scrollInterval;
+let scrollSpeed = 2;
+
+scrollerWrapper.scrollLeft += 4000;
+
+galleryHoverLeft.addEventListener('mouseenter', function() {
+    scrollGallery('left');
+});
+
+galleryHoverLeft.addEventListener('mouseleave', function() {
+    clearInterval(scrollInterval);
+});
+
+galleryHoverRight.addEventListener('mouseenter', function() {
+    scrollGallery('right');
+});
+
+galleryHoverRight.addEventListener('mouseleave', function() {
+    clearInterval(scrollInterval);
+});
+
+function scrollGallery(direction) {
+    if(direction === 'left') {
+        scrollInterval = setInterval(function() {
+            scrollerWrapper.scrollLeft -= scrollSpeed;
+        }, 0.25);
+    } else if(direction === 'right') {
+        scrollInterval = setInterval(function() {
+            scrollerWrapper.scrollLeft += scrollSpeed;
+        }, 0.25);
+    }
+}
 
 const workItemContent = document.querySelectorAll('.item-content');
 const workImageWrappers = document.querySelectorAll('.image-wrapper');

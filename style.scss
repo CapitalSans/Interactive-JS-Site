@@ -14,6 +14,7 @@ $breakpoint-main-width: 1600px;
 }
 
 body {
+    // overflow-x: hidden;
     header {
         position: sticky;
         top: 0;
@@ -217,8 +218,75 @@ body {
             }
         }
     }
+    #home-about {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 10rem;
+        background-color: #f4f5f8;
+        height: 150vh;
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10rem 0;
+            h2 {
+                font-family: font.$medium;
+                text-align: center;
+                font-weight: 580;
+                font-size: 3.75rem;
+                max-width: 800px;
+                margin-bottom: 2rem;
+            }
+            p {
+                font-family: font.$light;
+                font-weight: 300;
+                text-align: center;
+                font-size: 2rem;
+                max-width: 700px;
+            }
+            button {
+                margin-top: 2rem;
+            }
+        }
+    }
     footer {
         height: 100vh;
+    }
+}
+
+.image-gallery {
+    display: flex;
+    align-items: center;
+    .hover-panel {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        height: 400px;
+        width: 100%;
+        .left {
+            border: 1px solid $primary-color;
+            height: 100%;
+            width: 40%;
+        }
+        .right {
+            border: 1px solid $primary-color;
+            height: 100%;
+            width: 40%;
+        }
+    }
+    .scroller-wrapper {
+        overflow-x: scroll;
+        .scroller {
+            width: 6000px;
+            display: flex;
+            align-items: center;
+            gap: 6rem;
+            img {
+                // max-width: 600px;
+                // max-height: 500px;
+            }
+        }
     }
 }
 
@@ -230,9 +298,9 @@ body {
     background: none;
     position: relative;
     p {
-        font-family: font.$light;
-        font-weight: 300;
-        font-size: 1.75rem;
+        font-family: font.$light !important;
+        font-weight: 300 !important;
+        font-size: 1.75rem !important;
     }
     img {
         opacity: 0.25;
@@ -374,6 +442,14 @@ body {
 .fade-out {
     transition: opacity 0.25s;
     opacity: 0;
+}
+
+.hide-scroll {
+    -ms-overflow-style: none;  // IE and Edge
+    scrollbar-width: none;  // Firefox 
+    &::-webkit-scrollbar {
+        display: none; // chrome safari opera
+    }
 }
 
 .hidden {
